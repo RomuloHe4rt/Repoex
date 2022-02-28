@@ -1,4 +1,4 @@
-import Config
+use Mix.Config
 
 # Configure your database
 #
@@ -8,9 +8,11 @@ import Config
 config :repoex, Repoex.Repo,
   username: "postgres",
   password: "postgres",
-  database: "repoex_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "postgres_test#{System.get_env("MIX_TEST_PARTITION")}",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :repoex, Repoex, get_repos_adapter: Repoex.GetReposMock
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
@@ -20,6 +22,3 @@ config :repoex, RepoexWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Initialize plugs at runtime for faster test compilation
-config :phoenix, :plug_init_mode, :runtime
