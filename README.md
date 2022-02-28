@@ -1,4 +1,4 @@
-# GitHub Api
+# Repoex (API GITHUB)
 
 [![Language](https://img.shields.io/badge/language-elixir-purple)](https://img.shields.io/badge/language-elixir-purple) [![Platform](https://img.shields.io/badge/platform-api-blueviolet)](https://img.shields.io/badge/platform-api-blueviolet) [![License](https://img.shields.io/badge/license-MIT-lightgrey)](/LICENSE)
 
