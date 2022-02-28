@@ -10,7 +10,14 @@ defmodule Repoex.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -48,7 +55,8 @@ defmodule Repoex.MixProject do
       {:hackney, "~> 1.17.0"},
       {:bypass, "~> 2.1", only: :test},
       {:mox, "~> 1.0", only: :test},
-      {:pbkdf2_elixir, "~> 1.3"}
+      {:pbkdf2_elixir, "~> 1.3"},
+      {:guardian, "~> 2.0"}
     ]
   end
 
