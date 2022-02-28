@@ -10,6 +10,12 @@ import Config
 config :repoex,
   ecto_repos: [Repoex.Repo]
 
+config :repoex, Repoex.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
+config :repoex, Repoex, get_repos_adapter: Repoex.GetRepos
+
 # Configures the endpoint
 config :repoex, RepoexWeb.Endpoint,
   url: [host: "localhost"],
