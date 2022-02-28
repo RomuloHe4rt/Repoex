@@ -18,21 +18,18 @@ defmodule Repoex.GetReposTest do
 
       body = ~s([
         {
-          "id": 277408587,
-          "name": "Readme",
-          "html_url": "https://github.com/RomuloHe4rt/RomuloHe4rt",
-          "description": null,
-          "stargazers_count": 0
+          "description": "Desenvolvendo um site por dia durante 25 dias",
+          "html_url": "https://github.com/RomuloHe4rt/25sites25days",
+          "id": 386716157,
+          "name": "25sites25days",
+          "stargazers_count": 3
         },
         {
-          "id": 250084405,
-          "name": "Rockelivery",
-          "html_url": "https://github.com/RomuloHe4rt/rockelivery",
-          "description": "API for restaurant orders.
-
-          ",
-          "stargazers_count": 1
-        }
+          "description": nil,
+          "html_url": "https://github.com/RomuloHe4rt/exmeal",
+          "id": 455920643,
+          "name": "exmeal",
+          "stargazers_count": 0}
       ])
 
       Bypass.expect(bypass, "GET", "#{user}/repos", fn conn ->

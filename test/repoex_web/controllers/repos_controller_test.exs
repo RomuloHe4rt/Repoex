@@ -10,18 +10,18 @@ defmodule RepoexWeb.ReposControllerTest do
 
       body = [
         %Repository{
-          id: 277_408_587,
-          name: "Readme",
-          html_url: "https://github.com/RomuloHe4rt/RomuloHe4rt",
-          description: nil,
-          stargazers_count: 0
+          id: 386_716_157,
+          name: "25sites25days",
+          html_url: "https://github.com/RomuloHe4rt/25sites25days",
+          description: "Desenvolvendo um site por dia durante 25 dias",
+          stargazers_count: 3
         },
         %Repository{
-          id: 250_084_405,
-          name: "Rockelivery",
-          html_url: "https://github.com/RomuloHe4rt/rockelivery",
-          description: "API for restaurant orders.",
-          stargazers_count: 1
+          id: 455_920_643,
+          name: "exmeal",
+          html_url: "https://github.com/RomuloHe4rt/exmeal",
+          description: nil,
+          stargazers_count: 0
         }
       ]
 
@@ -34,18 +34,18 @@ defmodule RepoexWeb.ReposControllerTest do
 
       expected_response = [
         %{
-          "description" => nil,
-          "html_url" => "https://github.com/RomuloHe4rt/RomuloHe4rt",
-          "id" => 277_408_587,
-          "name" => "Readme",
-          "stargazers_count" => 0
+          "description" => "Desenvolvendo um site por dia durante 25 dias",
+          "html_url" => "https://github.com/RomuloHe4rt/25sites25days",
+          "id" => 386_716_157,
+          "name" => "25sites25days",
+          "stargazers_count" => 3
         },
         %{
-          "description" => "API for restaurant orders.",
-          "html_url" => "https://github.com/RomuloHe4rt/rockelivery",
-          "id" => 250_084_405,
-          "name" => "Rockelivery",
-          "stargazers_count" => 1
+          "description" => nil,
+          "html_url" => "https://github.com/RomuloHe4rt/exmeal",
+          "id" => 455_920_643,
+          "name" => "exmeal",
+          "stargazers_count" => 0
         }
       ]
 

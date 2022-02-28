@@ -29,8 +29,8 @@ defmodule Repoex.GetRepos do
     {:ok, repos}
   end
 
-  defp handle_get({:ok, %Env{status: 404, body: %{"message" => "Not Found!"}}}) do
-    {:error, Error.build(:not_found, "User not found!")}
+  defp handle_get({:ok, %Env{status: 404, body: %{"message" => "Not Found"}}}) do
+    {:error, Error.build(:not_found, "User not found")}
   end
 
   defp handle_get({:error, reason}) do
