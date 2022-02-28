@@ -1,5 +1,5 @@
 defmodule Repoex do
-  alias Repoex.GetRepos
-
-  defdelegate get_repos(user), to: GetRepos, as: :call
+  defdelegate get_repos(user),
+    to: Application.fetch_env!(:repoex, __MODULE__)[:get_repos_adapter],
+    as: :call
 end

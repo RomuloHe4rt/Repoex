@@ -5,7 +5,6 @@ defmodule Repoex.Application do
 
   use Application
 
-  @impl true
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
@@ -28,9 +27,10 @@ defmodule Repoex.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
-  @impl true
   def config_change(changed, _new, removed) do
+    # coveralls-ignore-start
     RepoexWeb.Endpoint.config_change(changed, removed)
+    # coveralls-ignore-stop
     :ok
   end
 end

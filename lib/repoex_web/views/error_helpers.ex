@@ -29,5 +29,7 @@ defmodule RepoexWeb.ErrorHelpers do
     else
       Gettext.dgettext(RepoexWeb.Gettext, "errors", msg, opts)
     end
+
+    # coveralls-ignore-stop
   end
 end
