@@ -1,9 +1,5 @@
 defmodule Repoex do
-  @moduledoc """
-  Repoex keeps the contexts that define your domain
-  and business logic.
+  alias Repoex.GetRepos
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate get_repos(user), to: GetRepos, as: :call
 end

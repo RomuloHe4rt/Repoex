@@ -7,6 +7,8 @@ defmodule RepoexWeb.Router do
 
   scope "/api", RepoexWeb do
     pipe_through :api
+
+    get "/repos/:user", ReposController, :index
   end
 
   # Enables LiveDashboard only for development
