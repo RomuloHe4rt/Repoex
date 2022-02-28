@@ -27,4 +27,4 @@ To run tests:
 
 ## :page_facing_up: License
 
-- [MIT](/LICENSE.md)
+- [MIT](https://github.com/RomuloHe4rt/Repoex/blob/main/LICENSE)
