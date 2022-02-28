@@ -6,7 +6,7 @@ defmodule Repoex.GetRepos do
 
   @base_url "https://api.github.com/users/"
   plug Tesla.Middleware.JSON
-  plug Tesla.Middleware.Headers, [{"User-Agent", "Repoex"}]
+  plug Tesla.Middleware.Headers, [{"User-Agent", "ElixirGitHub"}]
 
   def call(base_url \\ @base_url, user) do
     "#{base_url}#{user}/repos"

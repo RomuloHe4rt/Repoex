@@ -5,11 +5,23 @@ defmodule RepoexWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug RepoexWeb.Auth.Pipeline
+    plug RepoexWeb.Plugs.RefreshToken
+  end
+
+  scope "/api", RepoexWeb do
+    pipe_through [:api, :auth]
+
+    get "/repos/:user", ReposController, :index
+    resources "/users", UsersController, except: [:new, :edit, :create]
+  end
+
   scope "/api", RepoexWeb do
     pipe_through :api
 
-    get "/repos/:user", ReposController, :index
-    resources "/users", UsersController, except: [:new, :edit]
+    post "/users/signin", UsersController, :sign_in
+    post "/users", UsersController, :create
   end
 
   # Enables LiveDashboard only for development
