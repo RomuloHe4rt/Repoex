@@ -2,9 +2,20 @@ defmodule RepoexWeb.ReposControllerTest do
   use RepoexWeb.ConnCase, async: true
   import Mox
 
-  alias Repoex.{Error, GetReposMock, Repository}
+  alias Repoex.{Error, GetReposMock, Repository, User}
+  alias Repoex.Users.Create
+  alias RepoexWeb.Auth.Guardian
 
   describe "index/1" do
+    setup %{conn: conn} do
+      {:ok, %User{} = user} = Create.call(%{"password" => "123456"})
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn}
+    end
+
     test "when the user exists, return their repositories", %{conn: conn} do
       user = "RomuloHe4rt"
 
@@ -17,9 +28,9 @@ defmodule RepoexWeb.ReposControllerTest do
           stargazers_count: 3
         },
         %Repository{
-          id: 455_920_643,
-          name: "exmeal",
-          html_url: "https://github.com/RomuloHe4rt/exmeal",
+          id: 400_183_141,
+          name: "api-quotation-php",
+          html_url: "https://github.com/RomuloHe4rt/api-quotation-php",
           description: nil,
           stargazers_count: 0
         }
@@ -32,24 +43,25 @@ defmodule RepoexWeb.ReposControllerTest do
         |> get(Routes.repos_path(conn, :index, user))
         |> json_response(:ok)
 
-      expected_response = [
-        %{
-          "description" => "Desenvolvendo um site por dia durante 25 dias",
-          "html_url" => "https://github.com/RomuloHe4rt/25sites25days",
-          "id" => 386_716_157,
-          "name" => "25sites25days",
-          "stargazers_count" => 3
-        },
-        %{
-          "description" => nil,
-          "html_url" => "https://github.com/RomuloHe4rt/exmeal",
-          "id" => 455_920_643,
-          "name" => "exmeal",
-          "stargazers_count" => 0
-        }
-      ]
-
-      assert response == expected_response
+      assert %{
+               "token" => _,
+               "repos" => [
+                 %{
+                   "description" => "Desenvolvendo um site por dia durante 25 dias",
+                   "html_url" => "https://github.com/RomuloHe4rt/25sites25days",
+                   "id" => 386_716_157,
+                   "name" => "25sites25days",
+                   "stargazers_count" => 3
+                 },
+                 %{
+                   "description" => nil,
+                   "html_url" => "https://github.com/RomuloHe4rt/api-quotation-php",
+                   "id" => 400_183_141,
+                   "name" => "api-quotation-php",
+                   "stargazers_count" => 0
+                 }
+               ]
+             } = response
     end
 
     test "when the user does not exists, returns an error", %{conn: conn} do
