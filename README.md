@@ -27,4 +27,4 @@ To run tests:
 
 ## :page_facing_up: License
 
-- [MIT](/LICENSE.txt)
+- [MIT](/LICENSE.md)
